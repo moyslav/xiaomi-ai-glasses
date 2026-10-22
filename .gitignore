@@ -1,0 +1,31 @@
+# --- secrets / personal data (never commit these) ---
+*passToken*
+*token*.json
+config.local.json
+cookies.txt
+*.cookie
+*.pem
+*.p12
+
+# --- large artifacts ---
+*.apk
+*.xapk
+*.dex
+*.bin
+glasses.apk
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# --- editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- scan outputs ---
+scan*.txt
+report*.json

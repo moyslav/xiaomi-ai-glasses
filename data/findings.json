@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-10-22",
+  "device": {
+    "name": "Xiaomi AI Glasses",
+    "model": "M2442G1",
+    "os": "openvela (Xiaomi Vela / NuttX)",
+    "soc": "Qualcomm Snapdragon AR1",
+    "companion": "Bestechnic BES2700H",
+    "wifi": "Qualcomm WCN7851",
+    "memory": "Kingston ePoP",
+    "camera": "Sony IMX681, 12 MP, video 2304x1728@30",
+    "battery": "263 mAh",
+    "usb": {
+      "vid_pid": "2717:50BD",
+      "revision": "0510",
+      "interfaces": ["MI_00 UVC Camera (class 0x0e)"],
+      "driver": "usbvideo",
+      "bus_reported": "MAC:04:34:C3:4F:01:8C-Xiaomi AI Glasses 018C",
+      "serial": "63791/DYAMJQ5WA00105"
+    }
+  },
+  "firmware": {
+    "public_image_available": false,
+    "checked_archives": [
+      "AstralSightStudios/MiWearFirmwareArchives",
+      "hrk666666/firmware-archives-public"
+    ],
+    "archive_device_count": 56,
+    "archive_contains_glasses": false,
+    "known_versions": ["1.2.31.0", "1.3.13.0"],
+    "adb": "enabled via vulnerability by researcher, patched by Xiaomi"
+  },
+  "apk": {
+    "package": "com.xiaomi.superhexa",
+    "official_url": "https://cnbj1.fds.api.xiaomi.com/camera-glasses-fds/andriod/eco-andriod-glass.apk",
+    "size": 402681690,
+    "sha256": "CFB86B4A886015EF75297646609C41FBD0E5A0069F8D68610EC6282F3EA68A00",
+    "last_modified": "2026-02-12T03:51:38Z",
+    "zip_entries": 4768,
+    "dex_files": 17,
+    "unique_urls": 468
+  },
+  "device_api": {
+    "base": "http://<glasses-ip>:8080",
+    "auth_header": "Authorization",
+    "endpoints": [
+      "/v1/ota/uploadOtaFile/",
+      "/v1/ota/checkOtaStatus/",
+      "/v1/ota/packages",
+      "/v1/ota_package",
+      "/v1/devices/wearDetection/sensitivities",
+      "/v1/devices/glassesFrame",
+      "/v1/devices/{deviceId}",
+      "/v1/devices/{deviceId}/backups/security",
+      "/v1/deviceNetState/",
+      "/v1/live/{deviceId}/config",
+      "/v1/live/{deviceId}/info",
+      "/v1/live/{deviceId}/status",
+      "/v1/fileTransfer",
+      "/v1/filelists",
+      "/v1/files/{name}",
+      "/v1/file/upload",
+      "/v1/rawImage/{id}",
+      "/v1/setting",
+      "/v1/change",
+      "/v1/resetting",
+      "/v1/login",
+      "/v1/token",
+      "/v1/otp",
+      "/v1/logout",
+      "/v1/pointLog",
+      "/v1/devices/stackTraces"
+    ],
+    "extra_headers": {
+      "X-Request-ID": "App_Android_<ts>_<hash>",
+      "X-Mobile-Id": "<client id>",
+      "X-App-Version": "Android:<versionName>",
+      "Accept-Language": "<system language>",
+      "Content-Type": "application/json"
+    }
+  },
+  "hexa1": {
+    "service_token": "f7b364516e739c2ac60f1114e88f6afc",
+    "nonce": "md5(ts + random(0..10000)) hex, padStart(32, '0')",
+    "text_empty_body": "nonce={nonce}&timestamp={ts}",
+    "text_get_with_body": "{body}&nonce={nonce}&timestamp={ts}",
+    "text_post": "data={body}&nonce={nonce}&timestamp={ts}",
+    "key": "serviceToken + passToken, or serviceToken when passToken is empty",
+    "signature": "hex_lower(HMAC_SHA256(key, text))",
+    "header_format": "HEXA1-HMAC-SHA256 nonce={nonce}, timestamp={ts}, signature={sig}",
+    "pass_token_source": {
+      "device.eco.mi.com": "miWearServiceToken",
+      "device-eco.test.mi.com": "miWearServiceToken",
+      "asp.mi.com": "miWearServiceToken",
+      "*fds.api.xiaomi.com*": "miWearServiceToken",
+      "other hosts (including local IP)": "AccountInfo.passToken"
+    },
+    "test_vector": {
+      "ts": 1700000000000,
+      "rand": 1234,
+      "nonce": "d797018352a2731345a285fd3e0c055d",
+      "signature": "797b76fc2ed4379460f076ff4cab71044add4387a49f3e5b739eccbb87a9c2d7"
+    }
+  },
+  "status": {
+    "signing_implemented": true,
+    "probe_implemented": true,
+    "tested_against_device": false,
+    "blocker": "test host has no Wi-Fi adapter; glasses act as Wi-Fi access point"
+  }
+}
